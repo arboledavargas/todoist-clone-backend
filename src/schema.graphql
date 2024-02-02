@@ -1,0 +1,41 @@
+type Query {
+  tasks(dueDate: String): [Task]!
+}
+
+type Mutation {
+  setTaskDone(taskId: Int!): SetTaskDonePayload
+}
+
+type SetTaskDonePayload {
+  success: Boolean
+  task: Task
+}
+
+type Task {
+  id: String!
+  title: String!
+  content: String!
+  done: Boolean!
+  dueDate: String
+  subTasks: [SubTask!]!
+}
+
+type SubTask {
+  id: String!
+  title: String!
+  content: String!
+  done: Boolean!
+  dueDate: String
+}
+
+type Project {
+  id: String!
+  name: String!
+  color: String!
+  workspaceId: String!
+  isfavorite: Boolean!
+  layout: String!
+  order: Int!
+  archived: Boolean!
+  Tasks: [Task]!
+}
