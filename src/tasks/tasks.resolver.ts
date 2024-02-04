@@ -1,10 +1,12 @@
 import { Args, Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { Task } from '../graphql'
+import { TasksService } from "./tasks.service";
+
 
 @Resolver('Task')
 export class TasksResolver {
 
-  constructor(){
+  constructor(private readonly tasksService: TasksService){
 
   }
 

@@ -1,0 +1,2 @@
+-- AddForeignKey
+ALTER TABLE "Task" ADD CONSTRAINT "Task_superTaskId_fkey" FOREIGN KEY ("superTaskId") REFERENCES "Task"("id") ON DELETE SET NULL ON UPDATE CASCADE;
