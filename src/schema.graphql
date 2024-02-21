@@ -3,12 +3,20 @@ type Query {
 }
 
 type Mutation {
-  setTaskDone(taskId: Int!): SetTaskDonePayload
+  setTaskDone(taskId: String!): SetTaskDonePayload
+  createTask(input: CreateTaskInput): Task
 }
 
 type SetTaskDonePayload {
   success: Boolean
-  task: Task
+  task: Task!
+}
+
+input CreateTaskInput {
+  title: String!
+  content: String!
+  done: Boolean!
+  dueDate: String!
 }
 
 type Task {
@@ -16,7 +24,7 @@ type Task {
   title: String!
   content: String!
   done: Boolean!
-  dueDate: String
+  dueDate: String!
   subTasks: [SubTask!]!
 }
 
@@ -25,7 +33,7 @@ type SubTask {
   title: String!
   content: String!
   done: Boolean!
-  dueDate: String
+  dueDate: String!
 }
 
 type Project {

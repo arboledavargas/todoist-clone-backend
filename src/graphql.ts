@@ -8,17 +8,25 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export interface CreateTaskInput {
+    title: string;
+    content: string;
+    done: boolean;
+    dueDate: string;
+}
+
 export interface IQuery {
     tasks(dueDate?: Nullable<string>): Nullable<Task>[] | Promise<Nullable<Task>[]>;
 }
 
 export interface IMutation {
-    setTaskDone(taskId: number): Nullable<SetTaskDonePayload> | Promise<Nullable<SetTaskDonePayload>>;
+    setTaskDone(taskId: string): Nullable<SetTaskDonePayload> | Promise<Nullable<SetTaskDonePayload>>;
+    createTask(input?: Nullable<CreateTaskInput>): Nullable<Task> | Promise<Nullable<Task>>;
 }
 
 export interface SetTaskDonePayload {
     success?: Nullable<boolean>;
-    task?: Nullable<Task>;
+    task: Task;
 }
 
 export interface Task {
@@ -26,7 +34,7 @@ export interface Task {
     title: string;
     content: string;
     done: boolean;
-    dueDate?: Nullable<string>;
+    dueDate: string;
     subTasks: SubTask[];
 }
 
@@ -35,7 +43,7 @@ export interface SubTask {
     title: string;
     content: string;
     done: boolean;
-    dueDate?: Nullable<string>;
+    dueDate: string;
 }
 
 export interface Project {

@@ -23,8 +23,8 @@ model Task {
   done        Boolean
   dueDate     DateTime
   superTaskId String?
-  User        User?    @relation(fields: [userId], references: [id])
-  userId      String?
+  User        User    @relation(fields: [userId], references: [id])
+  userId      String
   subTasks    Task[]  @relation("TaskSubTasks")
   superTask   Task?   @relation("TaskSubTasks", fields: [superTaskId], references: [id])
 }
